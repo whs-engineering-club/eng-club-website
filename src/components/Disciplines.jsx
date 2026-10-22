@@ -1,7 +1,6 @@
 import { disciplines, opportunities } from '../data.js'
-import { trackPointer } from '../lib/hooks.js'
 import Reveal from './Reveal.jsx'
-import SectionHead from './SectionHead.jsx'
+import Section from './Section.jsx'
 
 const icons = [
   <>
@@ -24,36 +23,31 @@ const icons = [
   </>,
 ]
 
+function Rows({ items, offset = 0 }) {
+  return (
+    <ul className="rows">
+      {items.map((d, i) => (
+        <Reveal as="li" className="row" key={d.name} delay={i * 80}>
+          <svg className="row-icon" viewBox="0 0 40 40" aria-hidden="true">{icons[offset + i]}</svg>
+          <div className="row-name">
+            <h3>{d.name}</h3>
+            <ul className="tags">
+              {d.tags.map((t) => <li key={t}>{t}</li>)}
+            </ul>
+          </div>
+          <p>{d.text}</p>
+        </Reveal>
+      ))}
+    </ul>
+  )
+}
+
 export default function Disciplines() {
   return (
-    <section className="section" id="what">
-      <SectionHead code="01" title="What we do">
-        <h2>Build things, compete, give back.</h2>
-      </SectionHead>
-      <div className="disc-grid">
-        {disciplines.map((d, i) => (
-          <Reveal as="article" className="card disc glow-card" key={d.name} delay={i * 90} onPointerMove={trackPointer}>
-            <svg className="disc-icon" viewBox="0 0 40 40" aria-hidden="true">{icons[i]}</svg>
-            <h3>{d.name}</h3>
-            <p>{d.text}</p>
-            <ul className="tags">
-              {d.tags.map((t) => <li key={t}>{t}</li>)}
-            </ul>
-          </Reveal>
-        ))}
-      </div>
-      <div className="disc-grid pair">
-        {opportunities.map((d, i) => (
-          <Reveal as="article" className="card disc glow-card" key={d.name} delay={i * 90} onPointerMove={trackPointer}>
-            <svg className="disc-icon" viewBox="0 0 40 40" aria-hidden="true">{icons[disciplines.length + i]}</svg>
-            <h3>{d.name}</h3>
-            <p>{d.text}</p>
-            <ul className="tags">
-              {d.tags.map((t) => <li key={t}>{t}</li>)}
-            </ul>
-          </Reveal>
-        ))}
-      </div>
-    </section>
+    <Section id="what" index="01" label="What we do" title="Build things, compete, give back.">
+      <Rows items={disciplines} />
+      <Reveal as="p" className="label rows-label">Beyond the shop</Reveal>
+      <Rows items={opportunities} offset={disciplines.length} />
+    </Section>
   )
 }

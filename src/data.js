@@ -21,13 +21,6 @@ export const club = {
   },
 }
 
-export const stats = [
-  { value: 3, label: 'Active projects' },
-  { value: 2, label: 'Weeks between meetings' },
-  { value: 0, prefix: '$', label: 'Dues' },
-  { value: 0, label: 'Experience needed' },
-]
-
 export const nav = [
   { id: 'what', label: 'What we do' },
   { id: 'projects', label: 'Projects' },

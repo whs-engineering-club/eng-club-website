@@ -1,11 +1,16 @@
 import { club } from '../data.js'
+import { Logo } from './Nav.jsx'
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <span>{club.name} · {club.year}</span>
-      <span className="footer-status"><span className="led on" aria-hidden="true" />All systems go</span>
-      <a href="#top">Back to top ↑</a>
+      <div className="container">
+        <div className="footer-inner">
+          <span className="brand"><Logo />{club.name}</span>
+          <span>{club.year} season</span>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
     </footer>
   )
 }

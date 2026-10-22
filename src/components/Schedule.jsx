@@ -1,8 +1,8 @@
 import { club, events } from '../data.js'
-import { useNow } from '../lib/hooks.js'
+import { useNow, useScrollProgress } from '../lib/hooks.js'
 import { upcomingMeetings } from '../lib/meetings.js'
 import Reveal from './Reveal.jsx'
-import SectionHead from './SectionHead.jsx'
+import Section from './Section.jsx'
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -22,39 +22,43 @@ function soonLabel(days) {
   return `In ${days} days`
 }
 
-// Every-other-Wednesday meeting dates, each with whatever is planned for it.
+// Every-other-Wednesday meeting dates, each with whatever is planned for it. The line
+// down the left fills in as you scroll through the list.
 export default function Schedule() {
   const now = useNow(60000)
   const meetings = upcomingMeetings(now, 6)
+  const ref = useScrollProgress()
   return (
-    <section className="section" id="schedule">
-      <SectionHead code="03" title="Schedule">
-        <h2>Every other Wednesday.</h2>
-        <p className="section-sub">{club.meetings.time} in {club.meetings.where}. Here's what's coming up.</p>
-      </SectionHead>
-      <Reveal className="card upcoming">
-        <ul className="events">
+    <Section
+      id="schedule"
+      index="03"
+      label="Schedule"
+      title="Every other Wednesday."
+      sub={`${club.meetings.time} in ${club.meetings.where}. Here's what's coming up.`}
+    >
+      <div className="timeline" ref={ref}>
+        <span className="tl-track" aria-hidden="true"><span className="tl-fill" /></span>
+        <ol>
           {meetings.map((m, i) => {
             const ev = events.find((e) => e.date === m.iso)
-            const days = daysBetween(now, m.start)
             return (
-              <li key={m.iso} className={i === 0 ? 'next' : undefined}>
-                <div className="ev-date">
-                  <b>{String(m.start.getDate()).padStart(2, '0')}</b>
+              <Reveal as="li" key={m.iso} className={i === 0 ? 'tl-item next' : 'tl-item'} data-step="">
+                <span className="tl-node" aria-hidden="true" />
+                <div className="tl-date">
+                  <b>{m.start.getDate()}</b>
                   <span>{MONTHS[m.start.getMonth()]} · {DAYS[m.start.getDay()]}</span>
                 </div>
-                <div className="ev-main">
-                  <span className="ev-title">{ev ? ev.title : 'Club meeting'}</span>
-                  <span className="ev-note">{ev ? ev.note : 'Project work time and planning. Agenda posted closer to the date.'}</span>
+                <div className="tl-main">
+                  {i === 0 && <span className="tl-next">Next · {soonLabel(daysBetween(now, m.start))}</span>}
+                  <h3>{ev ? ev.title : 'Club meeting'}</h3>
+                  <p>{ev ? ev.note : 'Project work time and planning. Agenda posted closer to the date.'}</p>
                 </div>
-                <span className={ev?.kind === 'Competition' ? 'chip hot' : 'chip'}>
-                  {i === 0 ? soonLabel(days) : ev ? ev.kind : 'Meeting'}
-                </span>
-              </li>
+                <span className="tl-kind">{ev ? ev.kind : 'Meeting'}</span>
+              </Reveal>
             )
           })}
-        </ul>
-      </Reveal>
-    </section>
+        </ol>
+      </div>
+    </Section>
   )
 }

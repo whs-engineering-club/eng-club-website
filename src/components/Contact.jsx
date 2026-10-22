@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { club, whereabouts } from '../data.js'
 import Reveal from './Reveal.jsx'
+import Section from './Section.jsx'
 
 function CopyEmail() {
   const ref = useRef(null)
@@ -27,22 +28,23 @@ function CopyEmail() {
   return (
     <div className="email">
       <a href={`mailto:${club.email}`} ref={ref}>{club.email}</a>
-      <button type="button" className="btn ghost small" onClick={copy}>{label}</button>
+      <button type="button" className="btn outline small" onClick={copy}>{label}</button>
     </div>
   )
 }
 
 export default function Contact() {
   return (
-    <section className="section" id="contact">
-      <Reveal className="cta">
-        <div className="cta-copy">
-          <p className="eyebrow"><span className="code">07</span>Contact</p>
-          <h2>Come build with us.</h2>
-          <p className="section-sub">Questions about meetings, projects or sponsoring a build? The officers check this inbox every week.</p>
-          <CopyEmail />
-          <a className="btn ghost small social" href={club.instagram} target="_blank" rel="noopener noreferrer">Follow us on Instagram ↗</a>
-        </div>
+    <Section
+      id="contact"
+      index="07"
+      label="Contact"
+      title="Come build with us."
+      sub="Questions about meetings, projects or sponsoring a build? The officers check this inbox every week."
+      className="dark"
+    >
+      <Reveal className="contact">
+        <CopyEmail />
         <dl className="where">
           {whereabouts.map((w) => (
             <div key={w.k}>
@@ -50,8 +52,12 @@ export default function Contact() {
               <dd>{w.v}</dd>
             </div>
           ))}
+          <div>
+            <dt>Instagram</dt>
+            <dd><a href={club.instagram} target="_blank" rel="noopener noreferrer">@engineeringclub_westlake</a></dd>
+          </div>
         </dl>
       </Reveal>
-    </section>
+    </Section>
   )
 }
