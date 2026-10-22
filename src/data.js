@@ -163,7 +163,9 @@ export const tiers = [
 // `logo` is optional: a file in /public (e.g. 'sponsors/acme.svg'). Without one, the name is shown.
 // `url` is optional and makes the tile a link.
 // Example: { name: 'Acme Machining', tier: 'gold', logo: 'sponsors/acme.svg', url: 'https://example.com' }
-export const sponsors = []
+export const sponsors = [
+  { name: 'Concierge Health of Austin', tier: 'silver', logo: 'sponsors/concierge-health-of-austin.png', url: 'https://conciergehealthaustin.com' },
+]
 
 export const whereabouts = [
   { k: 'Meetings', v: 'Every other Wednesday, 4:30–5:00 PM' },
