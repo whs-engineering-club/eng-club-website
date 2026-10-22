@@ -1,19 +1,25 @@
 import { steps } from '../data.js'
-import View from './View.jsx'
-import Reveal from './Reveal.jsx'
+import { useScrollProgress } from '../lib/hooks.js'
 
+// A line draws down the steps as the section scrolls through the screen.
 export default function Join() {
+  const ref = useScrollProgress({ mode: 'pass' })
   return (
-    <View id="join" tag="D" title="How to join" callout="View D · Takes one meeting">
-      <Reveal as="ol" className="steps">
-        {steps.map((s) => (
-          <li key={s.title}>
-            <span className="num" aria-hidden="true" />
+    <section className="block join" id="join" ref={ref}>
+      <div className="block-head">
+        <p className="label">How to join</p>
+        <h2>It takes one meeting.</h2>
+      </div>
+      <ol className="steps" style={{ '--n': steps.length }}>
+        <span className="steps-line" aria-hidden="true"><i /></span>
+        {steps.map((s, i) => (
+          <li key={s.title} style={{ '--i': i }}>
+            <span className="dot" aria-hidden="true" />
             <h3>{s.title}</h3>
-            <p>{s.text}</p>
+            <p className="muted">{s.text}</p>
           </li>
         ))}
-      </Reveal>
-    </View>
+      </ol>
+    </section>
   )
 }

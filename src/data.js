@@ -1,7 +1,7 @@
 // All club details live here. Replace these placeholders with the real ones.
 
 export const club = {
-  name: 'Engineering Club',
+  name: 'WHS Engineering Club',
   year: '2026–27',
   email: 'engineeringclub@school.edu',
   meets: 'Tue + Thu',
@@ -12,38 +12,31 @@ export const club = {
 }
 
 export const nav = [
-  { id: 'what', label: 'What we do' },
   { id: 'projects', label: 'Projects' },
   { id: 'schedule', label: 'Schedule' },
   { id: 'join', label: 'Join' },
   { id: 'contact', label: 'Contact' },
 ]
 
-export const tools = [
-  'Arduino', 'Fusion 360', 'Soldering', 'Laser cutter', 'KiCad',
-  '3D printing', 'Python', 'Raspberry Pi', 'Onshape', 'Mecanum drive',
-]
+export const statement =
+  'We design, prototype, break and rebuild real hardware and software. Bring an idea or borrow one of ours. We have the tools, the parts bin, and people who will help you figure it out.'
 
 export const disciplines = [
   {
     name: 'Robotics',
     text: 'Drivetrains, arms, sensors and autonomous code. Our competition bot lives here.',
-    icon: 'robot',
   },
   {
     name: 'Electronics',
     text: 'Soldering, microcontrollers, PCB layout in KiCad, and a lot of debugging with a multimeter.',
-    icon: 'chip',
   },
   {
     name: 'CAD + Fab',
     text: 'Fusion 360 and Onshape modeling, 3D printing, laser cutting, and hand tools in the shop.',
-    icon: 'house',
   },
   {
     name: 'Design challenges',
     text: 'Bridge builds, egg drops and timed build-offs. Small teams, tight constraints, fast iteration.',
-    icon: 'graph',
   },
 ]
 

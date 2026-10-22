@@ -1,6 +1,4 @@
 import { events, weekly } from '../data.js'
-import View from './View.jsx'
-import Reveal from './Reveal.jsx'
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -16,42 +14,44 @@ function daysUntil(iso) {
 function soonLabel(days) {
   if (days === 0) return 'Today'
   if (days === 1) return 'Tomorrow'
-  return `Next up · in ${days} days`
+  return `In ${days} days`
 }
 
 export default function Schedule() {
   const nextIndex = events.findIndex((e) => daysUntil(e.date) >= 0)
   return (
-    <View id="schedule" tag="C" title="Schedule" callout="View C · Weekly + upcoming">
-      <Reveal className="weekly">
+    <section className="block" id="schedule">
+      <div className="block-head">
+        <p className="label">Schedule</p>
+        <h2>When we meet</h2>
+      </div>
+      <dl className="weekly">
         {weekly.map((w) => (
-          <div className="slot" key={w.day}>
-            <div className="day">{w.day}</div>
-            <div className="time">{w.time}</div>
-            <p>{w.text}</p>
+          <div key={w.day}>
+            <dt>{w.day}</dt>
+            <dd className="label">{w.time}</dd>
+            <dd className="muted">{w.text}</dd>
           </div>
         ))}
-      </Reveal>
-      <Reveal as="ul" className="events">
+      </dl>
+      <ul className="events">
         {events.map((e, i) => {
           const d = toDate(e.date)
           const days = daysUntil(e.date)
           return (
-            <li className="ev" key={e.date + e.title} style={days < 0 ? { opacity: 0.5 } : undefined}>
-              <div className="date">
-                <b>{String(d.getDate()).padStart(2, '0')}</b>
-                {MONTHS[d.getMonth()]} · {DAYS[d.getDay()]}
-              </div>
-              <div>
-                <div className="what">{e.title}</div>
-                <div className="note">{e.note}</div>
-                {i === nextIndex && <span className="soon">{soonLabel(days)}</span>}
-              </div>
-              <span className={e.kind === 'Competition' ? 'kind comp' : 'kind'}>{e.kind}</span>
+            <li key={e.date + e.title} className={days < 0 ? 'past' : undefined}>
+              <span className="ev-date label">{MONTHS[d.getMonth()]} {d.getDate()} · {DAYS[d.getDay()]}</span>
+              <span className="ev-main">
+                <span className="ev-title">{e.title}</span>
+                <span className="muted">{e.note}</span>
+              </span>
+              <span className="ev-kind label">
+                {i === nextIndex ? <b>{soonLabel(days)}</b> : e.kind}
+              </span>
             </li>
           )
         })}
-      </Reveal>
-    </View>
+      </ul>
+    </section>
   )
 }

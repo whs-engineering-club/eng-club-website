@@ -1,21 +1,23 @@
 import { faq } from '../data.js'
-import View from './View.jsx'
-import Reveal from './Reveal.jsx'
 
 export default function Faq() {
   return (
-    <View id="faq" tag="E" title="Questions" callout="View E · FAQ">
-      <Reveal className="faq">
+    <section className="block" id="faq">
+      <div className="block-head">
+        <p className="label">Questions</p>
+        <h2>Good to know</h2>
+      </div>
+      <div className="faq">
         {faq.map((f) => (
           <details key={f.q}>
             <summary>
               {f.q}
-              <span className="pm" aria-hidden="true" />
+              <span className="plus" aria-hidden="true" />
             </summary>
-            <div className="ans"><div><p>{f.a}</p></div></div>
+            <p className="muted">{f.a}</p>
           </details>
         ))}
-      </Reveal>
-    </View>
+      </div>
+    </section>
   )
 }
