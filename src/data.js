@@ -54,6 +54,20 @@ export const disciplines = [
   },
 ]
 
+// Shown under the disciplines in "What we do". Icons are matched by position in Disciplines.jsx.
+export const opportunities = [
+  {
+    name: 'Competitions',
+    tags: ['GARSEF', 'Conrad Challenge', 'And more'],
+    text: 'We find competitions for members and help you get into them. Examples include GARSEF and the Conrad Challenge, and we keep an eye out for more that fit what you like to build.',
+  },
+  {
+    name: 'Volunteering',
+    tags: ['STEAM Day', 'Elementary schools', 'NHS approved'],
+    text: 'NHS-approved STEAM volunteering. Right now that means STEAM Day at elementary schools, with more opportunities added as they come up.',
+  },
+]
+
 export const projects = [
   {
     area: 'Electronics',
