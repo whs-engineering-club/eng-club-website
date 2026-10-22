@@ -187,6 +187,4 @@ export const sponsors = [
 export const whereabouts = [
   { k: 'Meetings', v: 'Every other Wednesday, 4:30–5:00 PM' },
   { k: 'Room', v: 'The Bat Cave, Library' },
-  { k: 'Shop', v: 'Basement, behind the auto lab' },
-  { k: 'Advisor', v: 'Physics department' },
 ]
