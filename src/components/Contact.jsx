@@ -37,7 +37,7 @@ export default function Contact() {
     <section className="section" id="contact">
       <Reveal className="cta">
         <div className="cta-copy">
-          <p className="eyebrow"><span className="code">06</span>Contact</p>
+          <p className="eyebrow"><span className="code">07</span>Contact</p>
           <h2>Come build with us.</h2>
           <p className="section-sub">Questions about meetings, projects or sponsoring a build? The officers check this inbox every week.</p>
           <CopyEmail />
