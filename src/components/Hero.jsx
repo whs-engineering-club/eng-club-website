@@ -12,13 +12,13 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow"><span className="code">{club.year}</span>{club.name}</p>
           <h1>
-            Build robots.<br />
             Design circuits.<br />
+            Build prototypes.<br />
             <span className="glow">Break things on purpose.</span>
           </h1>
           <p className="lede">
             We're the students who stay after school to make things move, light up and occasionally catch fire
-            (safely). Robotics, electronics, CAD and design challenges. Open to every major.
+            (safely). Electronics, CAD and design challenges. Open to every major.
           </p>
           <div className="cta-row">
             <a className="btn primary" href="#join">Join the club</a>

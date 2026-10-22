@@ -8,11 +8,11 @@ export default function Projects() {
     <section className="section" id="projects">
       <SectionHead code="02" title="Current projects">
         <h2>Fall 2026 build season.</h2>
-        <p className="section-sub">Four teams, one shop. Sit in with any of them at a Tuesday meeting.</p>
+        <p className="section-sub">Three teams, one shop. Sit in with any of them at a meeting.</p>
       </SectionHead>
       <div className="proj-grid">
         {projects.map((p, i) => (
-          <Reveal as="article" className="card proj glow-card" key={p.title} delay={(i % 2) * 110} onPointerMove={trackPointer}>
+          <Reveal as="article" className="card proj glow-card" key={p.title} delay={i * 90} onPointerMove={trackPointer}>
             <div className="proj-top">
               <span className="mono-label">{p.area}</span>
               <span className={p.active ? 'status live' : 'status'}>

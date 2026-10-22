@@ -21,7 +21,8 @@ All the text lives in `src/data.js`: meeting times, projects, events, FAQ and th
 
 - `src/components/`: one component per page section
 - `src/components/CircuitCanvas.jsx`: the animated circuit board behind the hero
-- `src/components/NextMeeting.jsx`: live countdown to the next meeting (meeting times are in `club.meetings` in `src/data.js`)
+- `src/lib/meetings.js`: works out the every-other-Wednesday meeting dates from `club.meetings` in `src/data.js` (add holiday dates to `skip`)
+- `src/components/NextMeeting.jsx`: live countdown to the next meeting
 - `src/lib/hooks.js`: scroll reveal, page progress and clock hooks
 - `src/styles.css`: all styles, with the color tokens at the top
 

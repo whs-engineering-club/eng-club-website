@@ -1,17 +1,19 @@
-import { events, weekly } from '../data.js'
+import { club, events } from '../data.js'
+import { useNow } from '../lib/hooks.js'
+import { upcomingMeetings } from '../lib/meetings.js'
 import Reveal from './Reveal.jsx'
 import SectionHead from './SectionHead.jsx'
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-const WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const DAY_MS = 86400000
 
-const toDate = (iso) => new Date(`${iso}T00:00:00`)
-
-function daysUntil(iso) {
-  const today = new Date()
+function daysBetween(now, date) {
+  const today = new Date(now)
   today.setHours(0, 0, 0, 0)
-  return Math.round((toDate(iso) - today) / 86400000)
+  const day = new Date(date)
+  day.setHours(0, 0, 0, 0)
+  return Math.round((day - today) / DAY_MS)
 }
 
 function soonLabel(days) {
@@ -20,61 +22,39 @@ function soonLabel(days) {
   return `In ${days} days`
 }
 
+// Every-other-Wednesday meeting dates, each with whatever is planned for it.
 export default function Schedule() {
-  const nextIndex = events.findIndex((e) => daysUntil(e.date) >= 0)
-  const todayShort = DAYS[new Date().getDay()]
+  const now = useNow(60000)
+  const meetings = upcomingMeetings(now, 6)
   return (
     <section className="section" id="schedule">
       <SectionHead code="03" title="Schedule">
-        <h2>Three sessions a week.</h2>
+        <h2>Every other Wednesday.</h2>
+        <p className="section-sub">{club.meetings.time} in {club.meetings.where}. Here's what's coming up.</p>
       </SectionHead>
-      <div className="sched">
-        <Reveal className="card week">
-          <p className="mono-label">Weekly</p>
-          <div className="week-grid">
-            {WEEK.map((day) => {
-              const slot = weekly.find((w) => w.short === day)
-              return (
-                <div key={day} className={day === todayShort ? 'week-day today' : 'week-day'}>
-                  <span className="week-name">{day}</span>
-                  {slot ? (
-                    <div className="slot">
-                      <b>{slot.what}</b>
-                      {slot.time.split(' · ').map((part) => <span key={part}>{part}</span>)}
-                    </div>
-                  ) : (
-                    <div className="slot empty" aria-label="No meeting" />
-                  )}
+      <Reveal className="card upcoming">
+        <ul className="events">
+          {meetings.map((m, i) => {
+            const ev = events.find((e) => e.date === m.iso)
+            const days = daysBetween(now, m.start)
+            return (
+              <li key={m.iso} className={i === 0 ? 'next' : undefined}>
+                <div className="ev-date">
+                  <b>{String(m.start.getDate()).padStart(2, '0')}</b>
+                  <span>{MONTHS[m.start.getMonth()]} · {DAYS[m.start.getDay()]}</span>
                 </div>
-              )
-            })}
-          </div>
-        </Reveal>
-        <Reveal className="card upcoming" delay={120}>
-          <p className="mono-label">Upcoming</p>
-          <ul className="events">
-            {events.map((e, i) => {
-              const d = toDate(e.date)
-              const days = daysUntil(e.date)
-              return (
-                <li key={e.date + e.title} className={[days < 0 && 'past', i === nextIndex && 'next'].filter(Boolean).join(' ') || undefined}>
-                  <div className="ev-date">
-                    <b>{String(d.getDate()).padStart(2, '0')}</b>
-                    <span>{MONTHS[d.getMonth()]} · {DAYS[d.getDay()]}</span>
-                  </div>
-                  <div className="ev-main">
-                    <span className="ev-title">{e.title}</span>
-                    <span className="ev-note">{e.note}</span>
-                  </div>
-                  <span className={e.kind === 'Competition' ? 'chip hot' : 'chip'}>
-                    {i === nextIndex ? soonLabel(days) : e.kind}
-                  </span>
-                </li>
-              )
-            })}
-          </ul>
-        </Reveal>
-      </div>
+                <div className="ev-main">
+                  <span className="ev-title">{ev ? ev.title : 'Club meeting'}</span>
+                  <span className="ev-note">{ev ? ev.note : 'Project work time and planning. Agenda posted closer to the date.'}</span>
+                </div>
+                <span className={ev?.kind === 'Competition' ? 'chip hot' : 'chip'}>
+                  {i === 0 ? soonLabel(days) : ev ? ev.kind : 'Meeting'}
+                </span>
+              </li>
+            )
+          })}
+        </ul>
+      </Reveal>
     </section>
   )
 }

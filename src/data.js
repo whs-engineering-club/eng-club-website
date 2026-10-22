@@ -4,20 +4,24 @@ export const club = {
   name: 'WHS Engineering Club',
   year: '2026–27',
   email: 'engineeringclub@school.edu',
-  meets: 'Tue + Thu',
-  time: '3:30–5 PM',
-  location: 'Rm 214 / Shop',
   dues: '$0',
-  // Regular meetings, used for the "next meeting" countdown. day: 0 = Sunday … 6 = Saturday.
-  meetings: [
-    { day: 2, hour: 15, minute: 30, where: 'Room 214' },
-    { day: 4, hour: 15, minute: 30, where: 'Shop' },
-  ],
+  // Meetings repeat every `everyDays` days from `firstDate`. Used for the countdown and the
+  // list of meeting dates. Add dates to `skip` (YYYY-MM-DD) for breaks and holidays.
+  meetings: {
+    firstDate: '2026-10-28',
+    everyDays: 14,
+    hour: 15,
+    minute: 30,
+    durationMinutes: 90,
+    time: '3:30–5:00 PM',
+    where: 'Room 214',
+    skip: [],
+  },
 }
 
 export const stats = [
-  { value: 4, label: 'Active projects' },
-  { value: 3, label: 'Sessions a week' },
+  { value: 3, label: 'Active projects' },
+  { value: 2, label: 'Weeks between meetings' },
   { value: 0, prefix: '$', label: 'Dues' },
   { value: 0, label: 'Experience needed' },
 ]
@@ -31,15 +35,7 @@ export const nav = [
   { id: 'contact', label: 'Contact' },
 ]
 
-export const intro =
-  'We design, prototype, break and rebuild real hardware and software. Bring an idea or borrow one of ours. We have the tools, the parts bin, and people who will help you figure it out.'
-
 export const disciplines = [
-  {
-    name: 'Robotics',
-    tags: ['Drivetrains', 'Sensors', 'Autonomy'],
-    text: 'Drivetrains, arms, sensors and autonomous code. Our competition bot lives here.',
-  },
   {
     name: 'Electronics',
     tags: ['Arduino', 'KiCad', 'Soldering'],
@@ -58,19 +54,6 @@ export const disciplines = [
 ]
 
 export const projects = [
-  {
-    area: 'Robotics',
-    status: 'In progress',
-    active: true,
-    title: 'Competition robot',
-    text: 'A 4-motor mecanum-drive robot with a lift for the spring regional. Subteams handle chassis, intake, wiring and autonomous routines.',
-    progress: { label: 'Build progress', value: '60%', p: 0.6 },
-    specs: [
-      { value: 457, label: 'Frame, mm' },
-      { value: '12 V', label: 'System' },
-      { value: 9, label: 'Members' },
-    ],
-  },
   {
     area: 'Electronics',
     status: 'In progress',
@@ -98,7 +81,7 @@ export const projects = [
   },
   {
     area: 'Design challenge',
-    status: 'Starts Nov 13',
+    status: 'Starts Nov 25',
     title: 'Balsa bridge build-off',
     text: 'Teams of three get 30 sticks of balsa and a glue gun. Highest load-to-weight ratio on the test rig wins.',
     progress: { label: 'Teams signed up', value: '6 of 10', p: 0.6 },
@@ -110,22 +93,16 @@ export const projects = [
   },
 ]
 
-export const weekly = [
-  { day: 'Tuesday', short: 'Tue', what: 'General meeting', time: '3:30–5:00 PM · Room 214', text: 'General meeting, skill workshops and project stand-ups.' },
-  { day: 'Thursday', short: 'Thu', what: 'Open build', time: '3:30–5:00 PM · Shop', text: 'Open build time. Tools and printers available.' },
-  { day: 'Saturday', short: 'Sat', what: 'Robotics team', time: '10 AM–1 PM · Shop', text: 'Robotics team only, during build season.' },
-]
-
+// What's planned at upcoming meetings. Dates should match meeting dates.
 export const events = [
-  { date: '2026-10-28', title: 'Intro to soldering', note: 'Build a blinking LED badge to take home. Kits provided.', kind: 'Workshop' },
-  { date: '2026-11-04', title: 'CAD crash course: Onshape', note: "Bring a laptop. We'll model a phone stand and print the best ones.", kind: 'Workshop' },
-  { date: '2026-11-13', title: 'Balsa bridge build-off', note: 'Teams of three. Testing and results at the end of the session.', kind: 'Competition' },
-  { date: '2026-11-18', title: 'Guest talk: a day as a mechanical engineer', note: 'Q&A with a local engineer about school, internships and the job.', kind: 'Talk' },
+  { date: '2026-10-28', title: 'Kickoff + intro to soldering', note: 'Meet the club and build a blinking LED badge to take home. Kits provided.', kind: 'Workshop' },
+  { date: '2026-11-11', title: 'CAD crash course: Onshape', note: "Bring a laptop. We'll model a phone stand and print the best ones.", kind: 'Workshop' },
+  { date: '2026-11-25', title: 'Balsa bridge build-off', note: 'Teams of three. Testing and results at the end of the meeting.', kind: 'Competition' },
   { date: '2026-12-09', title: 'End-of-semester demo day', note: 'Every project team shows what they built. Friends and family welcome.', kind: 'Showcase' },
 ]
 
 export const steps = [
-  { title: 'Show up', text: "Come to any Tuesday meeting in Room 214. You don't need to sign up first or know anything about engineering." },
+  { title: 'Show up', text: "Come to any meeting. We meet every other Wednesday in Room 214. You don't need to sign up first or know anything about engineering." },
   { title: 'Pick a project', text: 'Try a workshop, sit in with a project team, and join whichever one you like. Switching later is fine.' },
   { title: 'Get shop-certified', text: 'A 30-minute safety walkthrough unlocks the 3D printers, laser cutter and power tools.' },
 ]
@@ -133,7 +110,7 @@ export const steps = [
 export const faq = [
   { q: 'Do I need any experience?', a: 'No. Most members started with zero experience. Workshops cover the basics, and older members pair up with new ones on projects.' },
   { q: 'Does it cost anything?', a: 'No dues. The club covers parts and materials for club projects. For personal projects, you only pay for materials you take home.' },
-  { q: 'Can I come only some weeks?', a: "Yes. Come when you can. Project teams do ask for a heads-up if you'll miss a build session close to a deadline." },
+  { q: 'Can I come only to some meetings?', a: "Yes. Come when you can. Project teams do ask for a heads-up if you'll miss a meeting close to a deadline." },
   { q: "I'm not planning to study engineering. Can I still join?", a: 'Yes. We have members heading into art, medicine, business and computer science. Building things is useful whatever you do next.' },
 ]
 
@@ -189,7 +166,7 @@ export const tiers = [
 export const sponsors = []
 
 export const whereabouts = [
-  { k: 'Meetings', v: 'Tue + Thu, 3:30–5:00 PM' },
+  { k: 'Meetings', v: 'Every other Wednesday, 3:30–5:00 PM' },
   { k: 'Room', v: '214, Science building' },
   { k: 'Shop', v: 'Basement, behind the auto lab' },
   { k: 'Advisor', v: 'Physics department' },
