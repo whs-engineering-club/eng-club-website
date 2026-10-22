@@ -177,6 +177,9 @@ export const sponsors = [
   { name: 'Hitec RCD', tier: 'gold', logo: 'sponsors/hitec-rcd.png', url: 'https://hitecrcd.com/' },
   { name: 'Concierge Health of Austin', tier: 'silver', logo: 'sponsors/concierge-health-of-austin.png', url: 'https://conciergehealthaustin.com' },
   { name: 'NextPCB', tier: 'bronze', url: 'https://www.nextpcb.com/' },
+  { name: 'Duet3D', tier: 'bronze', logo: 'sponsors/duet3d.png', url: 'https://www.duet3d.com/' },
+  { name: 'OSH Cut', tier: 'bronze', logo: 'sponsors/osh-cut.svg', url: 'https://www.oshcut.com/' },
+  { name: 'REV Robotics', tier: 'bronze', logo: 'sponsors/rev-robotics.png', url: 'https://www.revrobotics.com/' },
 ]
 
 export const whereabouts = [

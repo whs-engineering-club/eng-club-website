@@ -45,7 +45,7 @@ export function usePageProgress() {
       root.style.setProperty('--sy', String(Math.round(window.scrollY)))
       root.classList.toggle('scrolled', window.scrollY > 8)
       const dark = document.querySelector('.section.dark')
-      root.classList.toggle('nav-dark', !!dark && dark.getBoundingClientRect().top <= 64)
+      root.classList.toggle('nav-dark', !!dark && dark.getBoundingClientRect().top < 66)
     }
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update)

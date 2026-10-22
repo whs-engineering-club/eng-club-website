@@ -24,7 +24,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
 body {
   margin: 0;
   background: var(--bg);
@@ -304,21 +304,25 @@ h2 { font-size: clamp(2rem, 3.4vw, 2.85rem); line-height: 1.04; letter-spacing: 
 #sponsors { margin-top: 128px; }
 #contact { padding-top: 96px; }
 
-.wall { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--dark-line); border: 1px solid var(--dark-line); border-radius: 8px; overflow: hidden; }
+/* Sponsor marquee: two identical groups slide left by one group width, then loop. Pauses on hover. */
+.marquee {
+  overflow: hidden; border-top: 1px solid var(--dark-line); border-bottom: 1px solid var(--dark-line);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+.marquee-group { display: flex; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 .sponsor {
-  position: relative; display: flex; align-items: center; justify-content: center; min-height: 148px; padding: 40px 32px 32px;
-  background: var(--dark); text-decoration: none; transition: background .3s;
+  display: flex; align-items: center; justify-content: center; width: 220px; height: 120px; padding: 0 32px;
+  border-right: 1px solid var(--dark-line); text-decoration: none; transition: background .3s;
 }
 a.sponsor:hover { background: var(--dark-2); }
-.sponsor img { max-width: 70%; max-height: 44px; object-fit: contain; opacity: .82; transition: opacity .3s, transform .5s var(--ease); }
-.sponsor.platinum img { max-height: 52px; }
-a.sponsor:hover img { opacity: 1; transform: scale(1.03); }
-.sponsor-name { font: 600 1.35rem/1 var(--f-display); color: #fff; letter-spacing: -.02em; opacity: .85; }
-.sponsor-tier { position: absolute; top: 14px; left: 16px; font: 500 .66rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: #6E6E69; }
-.sponsor.open { color: #fff; font-family: var(--f-mono); }
-.wall .sponsor { transition: background .3s, opacity .8s var(--ease), transform .8s var(--ease); transition-delay: 0s, calc(var(--i) * .08s), calc(var(--i) * .08s); }
-.wall.pre { opacity: 1 !important; transform: none !important; }
-.wall.pre .sponsor { opacity: 0; transform: translateY(12px); }
+.sponsor img { max-width: 100%; max-height: 38px; object-fit: contain; opacity: .78; transition: opacity .3s; }
+a.sponsor:hover img { opacity: 1; }
+.sponsor-name { font: 600 1.25rem/1 var(--f-display); color: #fff; letter-spacing: -.02em; opacity: .85; white-space: nowrap; }
+.sponsor.open { width: auto; height: 96px; border: 1px dashed var(--dark-line); border-radius: 8px; color: #fff; font-family: var(--f-mono); }
 .sponsor-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 32px; }
 .sponsor-cta p { font-size: .95rem; }
 
@@ -373,10 +377,8 @@ a.sponsor:hover img { opacity: 1; transform: scale(1.03); }
   .steps::before { left: 4px; right: auto; top: 6px; bottom: 6px; width: 1px; height: auto; transform-origin: top; }
   .steps.pre::before { transform: scaleY(0); }
   .steps li::before { top: 4px; left: -28px; }
-  .sponsor { min-height: 112px; padding: 36px 16px 20px; }
-  .sponsor img { max-width: 85%; max-height: 34px; }
-  .sponsor.platinum img { max-height: 38px; }
-  .sponsor-name { font-size: 1.1rem; }
+  .sponsor { width: 168px; height: 96px; padding: 0 24px; }
+  .sponsor img { max-height: 30px; }
   .where { grid-template-columns: 1fr; gap: 20px; }
   .faq-a p { padding-right: 0; }
 }
@@ -390,4 +392,8 @@ a.sponsor:hover img { opacity: 1; transform: scale(1.03); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
   .hero-grid, .drawing { transform: none; }
+  .marquee { mask-image: none; -webkit-mask-image: none; }
+  .marquee-track { animation: none; width: auto; }
+  .marquee-group { flex-wrap: wrap; }
+  .marquee-group[aria-hidden] { display: none; }
 }
