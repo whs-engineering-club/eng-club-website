@@ -41,6 +41,7 @@ export default function Contact() {
           <h2>Come build with us.</h2>
           <p className="section-sub">Questions about meetings, projects or sponsoring a build? The officers check this inbox every week.</p>
           <CopyEmail />
+          <a className="btn ghost small social" href={club.instagram} target="_blank" rel="noopener noreferrer">Follow us on Instagram ↗</a>
         </div>
         <dl className="where">
           {whereabouts.map((w) => (
