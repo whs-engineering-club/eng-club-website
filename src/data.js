@@ -5,6 +5,7 @@ export const club = {
   year: '2026–27',
   email: 'westlake.engine@gmail.com',
   instagram: 'https://www.instagram.com/engineeringclub_westlake/',
+  interestForm: 'https://docs.google.com/forms/d/e/1FAIpQLSfNAgawI2RoI1pt047iI_lOBcG6Skr4tTGyyUl6Sl5corvwCA/viewform',
   dues: '$0',
   // Meetings repeat every `everyDays` days from `firstDate`. Used for the countdown and the
   // list of meeting dates. Add dates to `skip` (YYYY-MM-DD) for breaks and holidays.

@@ -1,4 +1,4 @@
-import { steps } from '../data.js'
+import { club, steps } from '../data.js'
 import Reveal from './Reveal.jsx'
 import SectionHead from './SectionHead.jsx'
 
@@ -19,6 +19,10 @@ export default function Join() {
           </li>
         ))}
       </Reveal>
+      <div className="join-cta">
+        <a className="btn primary" href={club.interestForm} target="_blank" rel="noopener noreferrer">Fill out the interest form ↗</a>
+        <p>Takes a minute. You can also just show up to a meeting.</p>
+      </div>
     </section>
   )
 }
