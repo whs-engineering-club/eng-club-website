@@ -6,16 +6,19 @@ const mailto = `mailto:${club.email}?subject=${encodeURIComponent('Sponsoring th
 
 const tierRank = Object.fromEntries(tiers.map((t, i) => [t.id, i]))
 const wall = [...sponsors].sort((a, b) => tierRank[a.tier] - tierRank[b.tier])
+// Repeated so one group is wider than a wide screen; the track then shows two copies of the group.
+const group = Array.from({ length: Math.max(1, Math.ceil(8 / Math.max(1, wall.length))) }, () => wall).flat()
 
-function SponsorTile({ s }) {
+function SponsorTile({ s, copy }) {
   const inner = s.logo
     ? <img src={`${import.meta.env.BASE_URL}${s.logo}`} alt={s.name} />
     : <span className="sponsor-name">{s.name}</span>
-  const cls = `card sponsor ${s.tier}`
+  const cls = 'card sponsor'
+  const hidden = copy ? { 'aria-hidden': true, tabIndex: -1 } : {}
   return s.url ? (
-    <a className={cls} href={s.url} target="_blank" rel="noopener noreferrer">{inner}</a>
+    <a className={cls} href={s.url} target="_blank" rel="noopener noreferrer" {...hidden}>{inner}</a>
   ) : (
-    <div className={cls}>{inner}</div>
+    <div className={cls} {...(copy ? { 'aria-hidden': true } : {})}>{inner}</div>
   )
 }
 
@@ -30,11 +33,21 @@ export default function Sponsors() {
         </p>
       </SectionHead>
 
-      <Reveal className="wall">
-        {wall.length > 0
-          ? wall.map((s) => <SponsorTile s={s} key={s.name} />)
-          : <a className="card sponsor open mono-label" href={mailto}>Your name here</a>}
-      </Reveal>
+      {wall.length > 0 ? (
+        <Reveal className="marquee" aria-label="Our sponsors">
+          <div className="marquee-track">
+            {[false, true].map((copy) => (
+              <div className="marquee-group" key={copy ? 'b' : 'a'} aria-hidden={copy || undefined}>
+                {group.map((s, i) => <SponsorTile s={s} copy={copy} key={`${s.name}-${i}`} />)}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      ) : (
+        <Reveal className="wall-empty">
+          <a className="card sponsor open mono-label" href={mailto}>Your name here</a>
+        </Reveal>
+      )}
 
       <div className="sponsor-cta">
         <a className="btn primary" href={mailto}>Become a sponsor →</a>
