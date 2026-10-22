@@ -15,6 +15,7 @@ export const nav = [
   { id: 'projects', label: 'Projects' },
   { id: 'schedule', label: 'Schedule' },
   { id: 'join', label: 'Join' },
+  { id: 'sponsors', label: 'Sponsors' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -119,6 +120,57 @@ export const faq = [
   { q: 'Can I come only some weeks?', a: "Yes. Come when you can. Project teams do ask for a heads-up if you'll miss a build session close to a deadline." },
   { q: "I'm not planning to study engineering. Can I still join?", a: 'Yes. We have members heading into art, medicine, business and computer science. Building things is useful whatever you do next.' },
 ]
+
+export const tiers = [
+  {
+    id: 'platinum',
+    name: 'Platinum',
+    price: '$1,000+',
+    perks: [
+      'Premier logo placement on all club materials',
+      'Featured sponsor spotlight on social media',
+      'Recognition at club meetings and events',
+      'Optional guest speaker slot at a meeting',
+      'Framed appreciation certificate',
+    ],
+  },
+  {
+    id: 'gold',
+    name: 'Gold',
+    price: '$750',
+    perks: [
+      'Prominent logo placement on club materials',
+      'Recognition at meetings and events',
+      'Thank-you post on social media',
+      'Framed appreciation certificate',
+    ],
+  },
+  {
+    id: 'silver',
+    name: 'Silver',
+    price: '$500',
+    perks: [
+      'Logo on our club trifold and newsletter',
+      'Thank-you post on social media',
+      'Printed appreciation certificate',
+    ],
+  },
+  {
+    id: 'bronze',
+    name: 'Bronze',
+    price: '$250',
+    perks: [
+      'Company name on our club trifold and newsletter',
+      'Digital appreciation certificate',
+    ],
+  },
+]
+
+// Add a sponsor here and it appears under its tier. `tier` is a tier id above.
+// `logo` is optional: a file in /public (e.g. 'sponsors/acme.svg'). Without one, the name is shown.
+// `url` is optional and makes the tile a link.
+// Example: { name: 'Acme Machining', tier: 'gold', logo: 'sponsors/acme.svg', url: 'https://example.com' }
+export const sponsors = []
 
 export const whereabouts = [
   { k: 'Meetings', v: 'Tue + Thu, 3:30–5:00 PM' },

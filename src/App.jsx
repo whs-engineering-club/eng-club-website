@@ -6,6 +6,7 @@ import Projects from './components/Projects.jsx'
 import Schedule from './components/Schedule.jsx'
 import Join from './components/Join.jsx'
 import Faq from './components/Faq.jsx'
+import Sponsors from './components/Sponsors.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -21,6 +22,7 @@ export default function App() {
         <Schedule />
         <Join />
         <Faq />
+        <Sponsors />
         <Contact />
       </main>
       <Footer />
