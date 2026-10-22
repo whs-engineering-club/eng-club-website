@@ -2,7 +2,7 @@
 
 export const club = {
   name: 'WHS Engineering Club',
-  year: '2026–27',
+  year: '2026-2027',
   email: 'westlake.engine@gmail.com',
   instagram: 'https://www.instagram.com/engineeringclub_westlake/',
   interestForm: 'https://docs.google.com/forms/d/e/1FAIpQLSfNAgawI2RoI1pt047iI_lOBcG6Skr4tTGyyUl6Sl5corvwCA/viewform',

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-inner">
           <span className="brand"><Logo />{club.name}</span>
-          <span>{club.year} season</span>
+          <span>{club.year}</span>
           <a href="#top">Back to top ↑</a>
         </div>
       </div>

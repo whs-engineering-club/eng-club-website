@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="container hero-inner">
         <div className="hero-copy">
           <p className="label intro" style={{ '--d': '0ms' }}>
-            <span className="dot" aria-hidden="true" />{club.name} · {club.year} season
+            <span className="dot" aria-hidden="true" />{club.name} · {club.year}
           </p>
           <h1>
             <span className="line"><span style={{ '--d': '90ms' }}>Engineering,</span></span>
