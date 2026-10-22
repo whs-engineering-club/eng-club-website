@@ -311,7 +311,10 @@ h2 { font-size: clamp(2rem, 3.4vw, 2.85rem); line-height: 1.04; letter-spacing: 
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
-.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+/* Pause on mouse hover or keyboard focus only. :focus-within stays stuck after clicking a logo, and :hover
+   sticks on touch screens after a tap. */
+@media (hover: hover) { .marquee:hover .marquee-track { animation-play-state: paused; } }
+.marquee:has(:focus-visible) .marquee-track { animation-play-state: paused; }
 .marquee-group { display: flex; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 .sponsor {
@@ -386,6 +389,42 @@ a.sponsor:hover img { opacity: 1; }
   .strip { grid-template-columns: 1fr; }
   .strip > div, .strip > div + div { padding-left: 0; border-left: 0; }
   .strip > div + div { border-top: 1px solid var(--line); }
+}
+
+/* Bridges: scroll-scrubbed engineering drawings between sections (Bridge.jsx, lib/bridges.js). Ink for
+   structure, one accent part per drawing. A centreline runs through each and draws out as it arrives. */
+.bridge {
+  --b-ink: var(--ink); --b-dim: var(--faint); --b-faint: var(--line); --b-bg: var(--bg); --b-hot: var(--accent);
+  position: relative; height: 260px; margin-top: 96px;
+}
+.bridge.on-dark { --b-ink: #fff; --b-dim: #6a6a66; --b-faint: var(--dark-line); --b-bg: var(--dark); background: var(--dark); box-shadow: 0 0 0 100vmax var(--dark); clip-path: inset(0 -100vmax); margin-top: 0; padding-top: 96px; height: 356px; }
+.bridge::before {
+  content: ""; position: absolute; left: var(--gutter); right: var(--gutter); top: 130px; height: 1px; transform-origin: 0 50%; transform: scaleX(var(--axis, 0));
+  background: repeating-linear-gradient(90deg, var(--b-dim) 0 14px, transparent 14px 18px, var(--b-dim) 18px 20px, transparent 20px 24px);
+}
+.bridge.on-dark::before { top: 226px; }
+.bridge svg { position: relative; display: block; width: 100%; height: 260px; }
+.bridge + .section { padding-top: 56px; }
+.bridge.on-dark + .section { padding-top: 40px; }
+.bridge svg * { vector-effect: non-scaling-stroke; }
+.br-line { fill: none; stroke: var(--b-ink); stroke-width: 1.25; stroke-linejoin: round; stroke-linecap: round; }
+.br-dim { stroke: var(--b-dim); }
+.br-faint { stroke: var(--b-faint); stroke-width: 1; }
+.br-thick { stroke-width: 2.25; }
+.br-hot { stroke: var(--b-hot); }
+.br-fill { fill: var(--b-bg); }
+.bridge svg .br-text { fill: var(--b-ink); font: 500 13px var(--f-mono); letter-spacing: .06em; vector-effect: none; stroke: none; }
+.bridge svg .br-hot-text { fill: var(--b-hot); }
+.bridge svg .br-dot { fill: var(--b-hot); stroke: none; }
+.br-led { fill: var(--b-bg); stroke: var(--b-dim); stroke-width: 1.5; transition: fill .3s, stroke .3s; }
+.br-led[data-on] { fill: var(--b-hot); stroke: var(--b-hot); }
+@media (max-width: 720px) {
+  .bridge { height: 150px; margin-top: 56px; }
+  .bridge.on-dark { margin-top: 0; padding-top: 48px; height: 198px; }
+  .bridge::before { top: 75px; }
+  .bridge.on-dark::before { top: 123px; }
+  .bridge svg { height: 150px; }
+  .bridge + .section { padding-top: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

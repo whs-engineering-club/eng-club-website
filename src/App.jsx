@@ -9,6 +9,7 @@ import Faq from './components/Faq.jsx'
 import Sponsors from './components/Sponsors.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import Bridge from './components/Bridge.jsx'
 
 export default function App() {
   // The page renders after load, so the browser can't jump to a #section link on its own.
@@ -22,12 +23,19 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <Bridge kind="gears" />
         <Disciplines />
+        <Bridge kind="piston" />
         <Projects />
+        <Bridge kind="caliper" />
         <Schedule />
+        <Bridge kind="linkage" />
         <Join />
+        <Bridge kind="scope" />
         <Faq />
+        <Bridge kind="printer" />
         <Sponsors />
+        <Bridge kind="connector" dark />
         <Contact />
       </main>
       <Footer />
