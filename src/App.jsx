@@ -8,12 +8,14 @@ import Faq from './components/Faq.jsx'
 import Sponsors from './components/Sponsors.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import SignalLine from './components/SignalLine.jsx'
 
 export default function App() {
   return (
     <>
       <Nav />
       <main>
+        <SignalLine />
         <Hero />
         <Disciplines />
         <Projects />

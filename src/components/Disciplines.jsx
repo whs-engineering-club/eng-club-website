@@ -32,7 +32,7 @@ export default function Disciplines() {
       </SectionHead>
       <div className="disc-grid">
         {disciplines.map((d, i) => (
-          <Reveal as="article" className="card disc glow-card" key={d.name} delay={i * 90} onPointerMove={trackPointer}>
+          <Reveal as="article" className="card disc glow-card" key={d.name} delay={i * 90} onPointerMove={trackPointer} data-port>
             <svg className="disc-icon" viewBox="0 0 40 40" aria-hidden="true">{icons[i]}</svg>
             <h3>{d.name}</h3>
             <p>{d.text}</p>
@@ -44,7 +44,7 @@ export default function Disciplines() {
       </div>
       <div className="disc-grid pair">
         {opportunities.map((d, i) => (
-          <Reveal as="article" className="card disc glow-card" key={d.name} delay={i * 90} onPointerMove={trackPointer}>
+          <Reveal as="article" className="card disc glow-card" key={d.name} delay={i * 90} onPointerMove={trackPointer} data-port>
             <svg className="disc-icon" viewBox="0 0 40 40" aria-hidden="true">{icons[disciplines.length + i]}</svg>
             <h3>{d.name}</h3>
             <p>{d.text}</p>

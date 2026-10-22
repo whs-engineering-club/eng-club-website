@@ -12,7 +12,7 @@ export default function Projects() {
       </SectionHead>
       <div className="proj-grid">
         {projects.map((p, i) => (
-          <Reveal as="article" className="card proj glow-card" key={p.title} delay={i * 90} onPointerMove={trackPointer}>
+          <Reveal as="article" className="card proj glow-card" key={p.title} delay={i * 90} onPointerMove={trackPointer} data-port>
             <div className="proj-top">
               <span className="mono-label">{p.area}</span>
               <span className={p.active ? 'status live' : 'status'}>

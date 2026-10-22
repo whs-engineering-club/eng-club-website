@@ -234,7 +234,10 @@ a { color: inherit; }
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
-.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+/* Pause on mouse hover or keyboard focus only. :focus-within would stay stuck after clicking a logo, and
+   :hover sticks on touch screens after a tap. */
+@media (hover: hover) { .marquee:hover .marquee-track { animation-play-state: paused; } }
+.marquee:has(:focus-visible) .marquee-track { animation-play-state: paused; }
 .marquee-group { display: flex; flex: none; gap: 16px; padding-right: 16px; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 .sponsor { flex: none; width: 240px; height: 112px; padding: 18px 24px; display: flex; align-items: center; justify-content: center; text-align: center;
@@ -271,6 +274,44 @@ a.sponsor:hover, a.sponsor:focus-visible { box-shadow: inset 0 0 0 1px var(--acc
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--accent); }
 .footer-status { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Signal: a wire down the left edge that draws as you scroll and taps into every section (SignalLine.jsx).
+   Sections sit above the wire so it runs behind cards; data-lit marks whatever the wire has reached. */
+main { position: relative; }
+.section { position: relative; z-index: 2; }
+.signal { position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none; overflow: visible; }
+.signal path { fill: none; stroke-linejoin: round; }
+.sg-base { stroke: var(--line); stroke-width: 1.5; }
+.sg-lit { stroke: var(--accent); stroke-width: 1.5; }
+.sg-glow { stroke: var(--accent); stroke-width: 7; opacity: .13; }
+.sg-pad { fill: var(--bg); stroke: var(--trace); stroke-width: 1.5; transition: fill .3s, stroke .3s; }
+.sg-pad[data-on] { fill: var(--accent); stroke: var(--accent); }
+.sg-halo { fill: var(--accent); opacity: .16; }
+.sg-head { fill: var(--accent); }
+.sg-flow { stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: 3 21; opacity: 0; transition: opacity .6s; }
+.sg-flow[data-on] { opacity: .85; animation: sgflow 1.4s linear infinite; }
+@keyframes sgflow { to { stroke-dashoffset: 24; } }
+
+.signal-on .eyebrow .code { opacity: .35; transition: opacity .5s, box-shadow .5s; }
+.signal-on .eyebrow .code[data-lit], .signal-on .cta[data-lit] .eyebrow .code { opacity: 1; box-shadow: 0 0 14px rgba(255, 255, 255, .55); }
+
+.signal-on .card[data-lit]:not(:hover) { animation: power 1s var(--ease); }
+@keyframes power { from { box-shadow: inset 0 0 0 1px var(--accent); } }
+.signal-on .cta[data-lit] { box-shadow: inset 0 0 0 1px var(--accent); }
+
+/* Discipline icons draw themselves and project meters fill once the wire arrives. */
+.signal-on .disc-icon > * { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.2s .2s var(--ease); }
+.signal-on .disc:not([data-lit]) .disc-icon > * { stroke-dashoffset: 1; }
+.signal-on .proj:not([data-lit]) .meter-bar i { transform: scaleX(0); }
+
+/* Schedule timeline: a rail down the inside edge of the card with a node per meeting. */
+.signal-on .events li { position: relative; }
+.signal-on .events li::before { content: ""; position: absolute; left: -13px; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 1.5px var(--trace); transition: background .4s, box-shadow .4s; }
+.signal-on .events li[data-lit]::before { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.signal-on .events li::after { content: ""; position: absolute; left: -13px; top: 50%; width: 2px; height: 100%; margin-left: -1px;
+  background: linear-gradient(var(--accent), var(--accent)) top / 100% calc(var(--seg, 0) * 100%) no-repeat, var(--line); }
+.signal-on .events li:last-child::after { display: none; }
 
 /* Responsive */
 @media (max-width: 1000px) {

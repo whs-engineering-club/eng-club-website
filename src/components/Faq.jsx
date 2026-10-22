@@ -10,7 +10,7 @@ export default function Faq() {
       </SectionHead>
       <div className="faq">
         {faq.map((f, i) => (
-          <Reveal as="details" className="card faq-item" key={f.q} delay={(i % 2) * 90}>
+          <Reveal as="details" className="card faq-item" key={f.q} delay={(i % 2) * 90} data-port>
             <summary>
               {f.q}
               <span className="plus" aria-hidden="true" />
