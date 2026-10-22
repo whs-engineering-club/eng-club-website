@@ -180,6 +180,7 @@ export const tiers = [
 // `url` is optional and makes the tile a link.
 // Example: { name: 'Acme Machining', tier: 'gold', logo: 'sponsors/acme.svg', url: 'https://example.com' }
 export const sponsors = [
+  { name: 'PCBWay', tier: 'platinum', logo: 'sponsors/pcbway.png', url: 'https://www.pcbway.com/' },
   { name: 'Hitec RCD', tier: 'gold', logo: 'sponsors/hitec-rcd.png', url: 'https://hitecrcd.com/' },
   { name: 'Concierge Health of Austin', tier: 'silver', logo: 'sponsors/concierge-health-of-austin.png', url: 'https://conciergehealthaustin.com' },
   { name: 'NextPCB', tier: 'bronze', url: 'https://www.nextpcb.com/' },
