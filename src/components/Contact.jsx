@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
 import { club, whereabouts } from '../data.js'
+import Reveal from './Reveal.jsx'
 
 function CopyEmail() {
-  const codeRef = useRef(null)
+  const ref = useRef(null)
   const [label, setLabel] = useState('Copy')
   const flash = (msg) => {
     setLabel(msg)
@@ -10,7 +11,7 @@ function CopyEmail() {
   }
   const selectText = () => {
     const r = document.createRange()
-    r.selectNodeContents(codeRef.current)
+    r.selectNodeContents(ref.current)
     const s = window.getSelection()
     s.removeAllRanges()
     s.addRange(r)
@@ -25,28 +26,31 @@ function CopyEmail() {
   }
   return (
     <div className="email">
-      <a href={`mailto:${club.email}`} ref={codeRef}>{club.email}</a>
-      <button type="button" onClick={copy}>{label}</button>
+      <a href={`mailto:${club.email}`} ref={ref}>{club.email}</a>
+      <button type="button" className="btn ghost small" onClick={copy}>{label}</button>
     </div>
   )
 }
 
 export default function Contact() {
   return (
-    <section className="block" id="contact">
-      <div className="block-head">
-        <p className="label">Contact</p>
-        <h2>Questions? Email us.</h2>
-      </div>
-      <CopyEmail />
-      <dl className="where">
-        {whereabouts.map((w) => (
-          <div key={w.k}>
-            <dt className="label">{w.k}</dt>
-            <dd>{w.v}</dd>
-          </div>
-        ))}
-      </dl>
+    <section className="section" id="contact">
+      <Reveal className="cta">
+        <div className="cta-copy">
+          <p className="eyebrow"><span className="code">06</span>Contact</p>
+          <h2>Come build with us.</h2>
+          <p className="section-sub">Questions about meetings, projects or sponsoring a build? The officers check this inbox every week.</p>
+          <CopyEmail />
+        </div>
+        <dl className="where">
+          {whereabouts.map((w) => (
+            <div key={w.k}>
+              <dt>{w.k}</dt>
+              <dd>{w.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
     </section>
   )
 }

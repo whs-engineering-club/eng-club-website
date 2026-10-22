@@ -1,25 +1,24 @@
 import { steps } from '../data.js'
-import { useScrollProgress } from '../lib/hooks.js'
+import Reveal from './Reveal.jsx'
+import SectionHead from './SectionHead.jsx'
 
-// A line draws down the steps as the section scrolls through the screen.
+// Steps connected by a trace that draws across when the row scrolls into view.
 export default function Join() {
-  const ref = useScrollProgress({ mode: 'pass' })
   return (
-    <section className="block join" id="join" ref={ref}>
-      <div className="block-head">
-        <p className="label">How to join</p>
+    <section className="section" id="join">
+      <SectionHead code="04" title="How to join">
         <h2>It takes one meeting.</h2>
-      </div>
-      <ol className="steps" style={{ '--n': steps.length }}>
-        <span className="steps-line" aria-hidden="true"><i /></span>
+      </SectionHead>
+      <Reveal as="ol" className="steps">
+        <span className="steps-trace" aria-hidden="true" />
         {steps.map((s, i) => (
           <li key={s.title} style={{ '--i': i }}>
-            <span className="dot" aria-hidden="true" />
+            <span className="node" aria-hidden="true">{i + 1}</span>
             <h3>{s.title}</h3>
-            <p className="muted">{s.text}</p>
+            <p>{s.text}</p>
           </li>
         ))}
-      </ol>
+      </Reveal>
     </section>
   )
 }

@@ -1,6 +1,6 @@
 # Engineering Club website
 
-A single-page, scroll-driven site for the WHS Engineering Club: what we do, current projects, meeting schedule, how to join, FAQ and contact info.
+A single-page site for the WHS Engineering Club: what we do, current projects, meeting schedule, how to join, FAQ and contact info.
 
 Built with React and Vite. Every push to `main` builds the site and deploys it to GitHub Pages through `.github/workflows/deploy.yml`.
 
@@ -20,7 +20,9 @@ All the text lives in `src/data.js`: meeting times, projects, events, FAQ and th
 ## Layout
 
 - `src/components/`: one component per page section
-- `src/lib/hooks.js`: `useScrollProgress` writes each section's scroll progress (0 to 1) to a `--p` CSS variable
-- `src/styles.css`: all styles and scroll animations, driven by `--p`, with light and dark color tokens at the top
+- `src/components/CircuitCanvas.jsx`: the animated circuit board behind the hero
+- `src/components/NextMeeting.jsx`: live countdown to the next meeting (meeting times are in `club.meetings` in `src/data.js`)
+- `src/lib/hooks.js`: scroll reveal, page progress and clock hooks
+- `src/styles.css`: all styles, with the color tokens at the top
 
-The scroll scenes (intro gears, statement, disciplines, projects) use sticky positioning. With "reduce motion" turned on in the OS, they show as a plain static page.
+Sections fade in as they scroll into view. With "reduce motion" turned on in the OS, everything shows without animation.

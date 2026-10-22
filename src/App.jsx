@@ -1,6 +1,5 @@
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
-import Statement from './components/Statement.jsx'
 import Disciplines from './components/Disciplines.jsx'
 import Projects from './components/Projects.jsx'
 import Schedule from './components/Schedule.jsx'
@@ -15,7 +14,6 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Statement />
         <Disciplines />
         <Projects />
         <Schedule />

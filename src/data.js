@@ -8,34 +8,50 @@ export const club = {
   time: '3:30–5 PM',
   location: 'Rm 214 / Shop',
   dues: '$0',
-  drawingNo: 'EC-2026-27',
+  // Regular meetings, used for the "next meeting" countdown. day: 0 = Sunday … 6 = Saturday.
+  meetings: [
+    { day: 2, hour: 15, minute: 30, where: 'Room 214' },
+    { day: 4, hour: 15, minute: 30, where: 'Shop' },
+  ],
 }
 
+export const stats = [
+  { value: 4, label: 'Active projects' },
+  { value: 3, label: 'Sessions a week' },
+  { value: 0, prefix: '$', label: 'Dues' },
+  { value: 0, label: 'Experience needed' },
+]
+
 export const nav = [
+  { id: 'what', label: 'What we do' },
   { id: 'projects', label: 'Projects' },
   { id: 'schedule', label: 'Schedule' },
   { id: 'join', label: 'Join' },
   { id: 'contact', label: 'Contact' },
 ]
 
-export const statement =
+export const intro =
   'We design, prototype, break and rebuild real hardware and software. Bring an idea or borrow one of ours. We have the tools, the parts bin, and people who will help you figure it out.'
 
 export const disciplines = [
   {
     name: 'Robotics',
+    tags: ['Drivetrains', 'Sensors', 'Autonomy'],
     text: 'Drivetrains, arms, sensors and autonomous code. Our competition bot lives here.',
   },
   {
     name: 'Electronics',
+    tags: ['Arduino', 'KiCad', 'Soldering'],
     text: 'Soldering, microcontrollers, PCB layout in KiCad, and a lot of debugging with a multimeter.',
   },
   {
     name: 'CAD + Fab',
+    tags: ['Fusion 360', '3D printing', 'Laser cutting'],
     text: 'Fusion 360 and Onshape modeling, 3D printing, laser cutting, and hand tools in the shop.',
   },
   {
     name: 'Design challenges',
+    tags: ['Build-offs', 'Egg drops', 'Teams of 3'],
     text: 'Bridge builds, egg drops and timed build-offs. Small teams, tight constraints, fast iteration.',
   },
 ]
@@ -94,9 +110,9 @@ export const projects = [
 ]
 
 export const weekly = [
-  { day: 'Tuesday', time: '3:30–5:00 PM · Room 214', text: 'General meeting, skill workshops and project stand-ups.' },
-  { day: 'Thursday', time: '3:30–5:00 PM · Shop', text: 'Open build time. Tools and printers available.' },
-  { day: 'Saturday', time: '10 AM–1 PM · Shop', text: 'Robotics team only, during build season.' },
+  { day: 'Tuesday', short: 'Tue', what: 'General meeting', time: '3:30–5:00 PM · Room 214', text: 'General meeting, skill workshops and project stand-ups.' },
+  { day: 'Thursday', short: 'Thu', what: 'Open build', time: '3:30–5:00 PM · Shop', text: 'Open build time. Tools and printers available.' },
+  { day: 'Saturday', short: 'Sat', what: 'Robotics team', time: '10 AM–1 PM · Shop', text: 'Robotics team only, during build season.' },
 ]
 
 export const events = [
