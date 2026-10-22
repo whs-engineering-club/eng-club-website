@@ -4,6 +4,7 @@ export const club = {
   name: 'WHS Engineering Club',
   year: '2026–27',
   email: 'westlake.engine@gmail.com',
+  instagram: 'https://www.instagram.com/engineeringclub_westlake/',
   dues: '$0',
   // Meetings repeat every `everyDays` days from `firstDate`. Used for the countdown and the
   // list of meeting dates. Add dates to `skip` (YYYY-MM-DD) for breaks and holidays.
@@ -164,6 +165,7 @@ export const tiers = [
 // `url` is optional and makes the tile a link.
 // Example: { name: 'Acme Machining', tier: 'gold', logo: 'sponsors/acme.svg', url: 'https://example.com' }
 export const sponsors = [
+  { name: 'Hitec RCD', tier: 'gold', logo: 'sponsors/hitec-rcd.png', url: 'https://hitecrcd.com/' },
   { name: 'Concierge Health of Austin', tier: 'silver', logo: 'sponsors/concierge-health-of-austin.png', url: 'https://conciergehealthaustin.com' },
 ]
 
