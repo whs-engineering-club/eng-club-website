@@ -3,18 +3,18 @@
 export const club = {
   name: 'WHS Engineering Club',
   year: '2026–27',
-  email: 'engineeringclub@school.edu',
+  email: 'westlake.engine@gmail.com',
   dues: '$0',
   // Meetings repeat every `everyDays` days from `firstDate`. Used for the countdown and the
   // list of meeting dates. Add dates to `skip` (YYYY-MM-DD) for breaks and holidays.
   meetings: {
     firstDate: '2026-10-28',
     everyDays: 14,
-    hour: 15,
+    hour: 16,
     minute: 30,
-    durationMinutes: 90,
-    time: '3:30–5:00 PM',
-    where: 'Room 214',
+    durationMinutes: 30,
+    time: '4:30–5:00 PM',
+    where: 'The Bat Cave, Library',
     skip: [],
   },
 }
@@ -102,7 +102,7 @@ export const events = [
 ]
 
 export const steps = [
-  { title: 'Show up', text: "Come to any meeting. We meet every other Wednesday in Room 214. You don't need to sign up first or know anything about engineering." },
+  { title: 'Show up', text: "Come to any meeting. We meet every other Wednesday in the Bat Cave in the Library. You don't need to sign up first or know anything about engineering." },
   { title: 'Pick a project', text: 'Try a workshop, sit in with a project team, and join whichever one you like. Switching later is fine.' },
   { title: 'Get shop-certified', text: 'A 30-minute safety walkthrough unlocks the 3D printers, laser cutter and power tools.' },
 ]
@@ -166,8 +166,8 @@ export const tiers = [
 export const sponsors = []
 
 export const whereabouts = [
-  { k: 'Meetings', v: 'Every other Wednesday, 3:30–5:00 PM' },
-  { k: 'Room', v: '214, Science building' },
+  { k: 'Meetings', v: 'Every other Wednesday, 4:30–5:00 PM' },
+  { k: 'Room', v: 'The Bat Cave, Library' },
   { k: 'Shop', v: 'Basement, behind the auto lab' },
   { k: 'Advisor', v: 'Physics department' },
 ]
