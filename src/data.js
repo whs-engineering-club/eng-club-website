@@ -182,6 +182,7 @@ export const tiers = [
 export const sponsors = [
   { name: 'Hitec RCD', tier: 'gold', logo: 'sponsors/hitec-rcd.png', url: 'https://hitecrcd.com/' },
   { name: 'Concierge Health of Austin', tier: 'silver', logo: 'sponsors/concierge-health-of-austin.png', url: 'https://conciergehealthaustin.com' },
+  { name: 'NextPCB', tier: 'bronze', url: 'https://www.nextpcb.com/' },
 ]
 
 export const whereabouts = [
