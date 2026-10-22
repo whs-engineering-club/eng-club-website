@@ -4,7 +4,7 @@ A single-page site for the Engineering Club: what we do, current projects, meeti
 
 Built with React and Vite. Every push to `main` builds the site and deploys it to GitHub Pages through `.github/workflows/deploy.yml`.
 
-Live site: https://rahil-desai.github.io/engineering-club/
+Live site: https://whs-engineering-club.github.io/eng-club-website/
 
 ## Run it locally
 
