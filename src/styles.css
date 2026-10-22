@@ -80,7 +80,8 @@ a { color: inherit; }
 .scrolled .nav { background: rgba(246, 246, 243, .82); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-color: var(--line); }
 .nav-inner { display: flex; align-items: center; gap: 32px; height: 64px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font: 600 .95rem/1 var(--f-display); color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
-.brand svg { width: 22px; height: 22px; }
+.logo { height: 46px; width: auto; display: block; }
+.nav-dark .logo, .footer .logo { filter: brightness(0) invert(1); }
 .nav nav { margin-left: auto; }
 .nav ul { display: flex; gap: 4px; }
 .nav li a {
