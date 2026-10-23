@@ -10,7 +10,7 @@ export const club = {
   // Meetings repeat every `everyDays` days from `firstDate`. Used for the countdown and the
   // list of meeting dates. Add dates to `skip` (YYYY-MM-DD) for breaks and holidays.
   meetings: {
-    firstDate: '2026-10-28',
+    firstDate: '2026-11-04',
     everyDays: 14,
     hour: 16,
     minute: 30,
@@ -104,10 +104,10 @@ export const projects = [
 
 // What's planned at upcoming meetings. Dates should match meeting dates.
 export const events = [
-  { date: '2026-10-28', title: 'Kickoff + intro to soldering', note: 'Meet the club and build a blinking LED badge to take home. Kits provided.', kind: 'Workshop' },
-  { date: '2026-11-11', title: 'CAD crash course: Onshape', note: "Bring a laptop. We'll model a phone stand and print the best ones.", kind: 'Workshop' },
-  { date: '2026-11-25', title: 'Balsa bridge build-off', note: 'Teams of three. Testing and results at the end of the meeting.', kind: 'Competition' },
-  { date: '2026-12-09', title: 'End-of-semester demo day', note: 'Every project team shows what they built. Friends and family welcome.', kind: 'Showcase' },
+  { date: '2026-11-04', title: 'Kickoff + intro to soldering', note: 'Meet the club and build a blinking LED badge to take home. Kits provided.', kind: 'Workshop' },
+  { date: '2026-11-18', title: 'CAD crash course: Onshape', note: "Bring a laptop. We'll model a phone stand and print the best ones.", kind: 'Workshop' },
+  { date: '2026-12-02', title: 'Balsa bridge build-off', note: 'Teams of three. Testing and results at the end of the meeting.', kind: 'Competition' },
+  { date: '2026-12-16', title: 'End-of-semester demo day', note: 'Every project team shows what they built. Friends and family welcome.', kind: 'Showcase' },
 ]
 
 export const steps = [
