@@ -44,7 +44,7 @@ function Rows({ items, offset = 0 }) {
 
 export default function Disciplines() {
   return (
-    <Section id="what" index="01" label="What we do" title="Build things, compete, give back.">
+    <Section id="what" title="Build things, compete, give back.">
       <Rows items={disciplines} />
       <Reveal as="p" className="label rows-label">Beyond the shop</Reveal>
       <Rows items={opportunities} offset={disciplines.length} />

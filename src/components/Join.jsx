@@ -5,7 +5,7 @@ import Section from './Section.jsx'
 // Steps joined by a line that draws across when the row scrolls into view.
 export default function Join() {
   return (
-    <Section id="join" index="04" label="How to join" title="It takes one meeting.">
+    <Section id="join" title="It takes one meeting.">
       <Reveal as="ol" className="steps">
         {steps.map((s, i) => (
           <li key={s.title} style={{ '--i': i }}>

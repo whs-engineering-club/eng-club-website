@@ -23,7 +23,7 @@ function Item({ f, i }) {
 
 export default function Faq() {
   return (
-    <Section id="faq" index="05" label="FAQ" title="Good to know.">
+    <Section id="faq" title="Good to know.">
       <div className="faq">
         {faq.map((f, i) => <Item f={f} i={i} key={f.q} />)}
       </div>

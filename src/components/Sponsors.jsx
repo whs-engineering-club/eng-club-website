@@ -25,8 +25,6 @@ export default function Sponsors() {
   return (
     <Section
       id="sponsors"
-      index="06"
-      label="Sponsors"
       title="Thank you."
       sub="Sponsors pay for the parts, filament and tools behind every project here. Thank you to the businesses and families who keep the club free to join."
       className="dark"

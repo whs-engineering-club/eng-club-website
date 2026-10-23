@@ -6,8 +6,6 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      index="02"
-      label="Current projects"
       title="Fall 2026 build season."
       sub="Three teams, one shop. Sit in with any of them at a meeting."
     >

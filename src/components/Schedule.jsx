@@ -31,8 +31,6 @@ export default function Schedule() {
   return (
     <Section
       id="schedule"
-      index="03"
-      label="Schedule"
       title="Every other Wednesday."
       sub={`${club.meetings.time} in ${club.meetings.where}. Here's what's coming up.`}
     >

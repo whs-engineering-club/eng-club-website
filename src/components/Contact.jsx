@@ -37,8 +37,6 @@ export default function Contact() {
   return (
     <Section
       id="contact"
-      index="07"
-      label="Contact"
       title="Come build with us."
       sub="Questions about meetings, projects or sponsoring a build? The officers check this inbox every week."
       className="dark"
