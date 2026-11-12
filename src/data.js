@@ -1,4 +1,4 @@
-// All club details live here. Replace these placeholders with the real ones.
+// All club details live here. Edit this file to update the site.
 
 export const club = {
   name: 'WHS Engineering Club',
@@ -21,33 +21,6 @@ export const club = {
   },
 }
 
-export const nav = [
-  { id: 'what', label: 'What we do' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'schedule', label: 'Schedule' },
-  { id: 'join', label: 'Join' },
-  { id: 'sponsors', label: 'Sponsors' },
-  { id: 'contact', label: 'Contact' },
-]
-
-export const disciplines = [
-  {
-    name: 'Electronics',
-    tags: ['Arduino', 'KiCad', 'Soldering'],
-    text: 'Soldering, microcontrollers, PCB layout in KiCad, and a lot of debugging with a multimeter.',
-  },
-  {
-    name: 'CAD + Fab',
-    tags: ['Fusion 360', '3D printing', 'Laser cutting'],
-    text: 'Fusion 360 and Onshape modeling, 3D printing, laser cutting, and hand tools in the shop.',
-  },
-  {
-    name: 'Design challenges',
-    tags: ['Build-offs', 'Egg drops', 'Teams of 3'],
-    text: 'Bridge builds, egg drops and timed build-offs. Small teams, tight constraints, fast iteration.',
-  },
-]
-
 // Shown under the disciplines in "What we do". Icons are matched by position in Disciplines.jsx.
 export const opportunities = [
   {
@@ -60,60 +33,6 @@ export const opportunities = [
     tags: ['STEAM Day', 'Elementary schools', 'NHS approved'],
     text: 'NHS-approved STEAM volunteering. Right now that means STEAM Day at elementary schools, with more opportunities added as they come up.',
   },
-]
-
-export const projects = [
-  {
-    area: 'Electronics',
-    status: 'In progress',
-    active: true,
-    title: 'Campus weather station',
-    text: 'Solar-powered sensor node logging temperature, humidity, pressure and wind speed to a public dashboard every 5 minutes.',
-    progress: { label: 'Build progress', value: '75%', p: 0.75 },
-    specs: [
-      { value: '5 min', label: 'Sample rate' },
-      { value: '6 W', label: 'Panel' },
-      { value: 5, label: 'Members' },
-    ],
-  },
-  {
-    area: 'CAD + Fab',
-    status: 'Prototyping',
-    title: 'Prosthetic hand',
-    text: 'A 3D-printed, tendon-driven hand based on open-source designs, adapted and tested with grip-strength measurements.',
-    progress: { label: 'Build progress', value: '35%', p: 0.35 },
-    specs: [
-      { value: '±0.2 mm', label: 'Tolerance' },
-      { value: 'PLA+', label: 'Material' },
-      { value: 4, label: 'Members' },
-    ],
-  },
-  {
-    area: 'Design challenge',
-    status: 'Starts Nov 25',
-    title: 'Balsa bridge build-off',
-    text: 'Teams of three get 30 sticks of balsa and a glue gun. Highest load-to-weight ratio on the test rig wins.',
-    progress: { label: 'Teams signed up', value: '6 of 10', p: 0.6 },
-    specs: [
-      { value: 30, label: 'Sticks' },
-      { value: 300, label: 'Span, mm' },
-      { value: 3, label: 'Per team' },
-    ],
-  },
-]
-
-// What's planned at upcoming meetings. Dates should match meeting dates.
-export const events = [
-  { date: '2026-11-04', title: 'Kickoff + intro to soldering', note: 'Meet the club and build a blinking LED badge to take home. Kits provided.', kind: 'Workshop' },
-  { date: '2026-11-18', title: 'CAD crash course: Onshape', note: "Bring a laptop. We'll model a phone stand and print the best ones.", kind: 'Workshop' },
-  { date: '2026-12-02', title: 'Balsa bridge build-off', note: 'Teams of three. Testing and results at the end of the meeting.', kind: 'Competition' },
-  { date: '2026-12-16', title: 'End-of-semester demo day', note: 'Every project team shows what they built. Friends and family welcome.', kind: 'Showcase' },
-]
-
-export const steps = [
-  { title: 'Show up', text: "Come to any meeting. We meet every other Wednesday in the Bat Cave in the Library. You don't need to sign up first or know anything about engineering." },
-  { title: 'Pick a project', text: 'Try a workshop, sit in with a project team, and join whichever one you like. Switching later is fine.' },
-  { title: 'Get shop-certified', text: 'A 30-minute safety walkthrough unlocks the 3D printers, laser cutter and power tools.' },
 ]
 
 export const faq = [
@@ -182,7 +101,59 @@ export const sponsors = [
   { name: 'REV Robotics', tier: 'bronze', logo: 'sponsors/rev-robotics.png', url: 'https://www.revrobotics.com/' },
 ]
 
-export const whereabouts = [
-  { k: 'Meetings', v: 'Every other Wednesday, 4:30–5:00 PM' },
-  { k: 'Room', v: 'The Bat Cave, Library' },
+// ---------------------------------------------------------------------------------------------
+// The season plan (biweekly, 18 meetings). Meetings are every other Wednesday, but not every
+// meeting happens, so activities are an ordered list rather than fixed dates: each meeting that
+// actually takes place does the next activity. When a meeting is cancelled, add its date to
+// club.meetings.skip above and the rest of the plan slides back one meeting. Buffer days absorb
+// the slack.
+export const plan = [
+  { field: 'Electrical', title: 'Arduino & Circuits 101', text: 'Blink an LED, wire a button and upload your first code.', materials: 'Arduino Uno clones, breadboards, jumper wires, LEDs, resistors', cost: '$8–15 per kit, reusable' },
+  { field: 'Electrical', title: 'Snap Circuits: Sound & Light', text: 'Build a working alarm or a light-up gadget.', materials: 'Snap Circuits kit, or DIY LED, buzzer and battery kits', cost: '$25–35 one-time kit' },
+  { field: 'Mechanical', title: 'Simple Machines Stations', text: 'Build levers, pulleys and gear trains that lift a weight.', materials: 'Popsicle sticks, string, small pulleys or spools, washers as weights', cost: '$15–25 total' },
+  { field: 'Mechanical', title: 'Mousetrap Car Design & Race', text: 'Turn stored energy into motion, then tune it for distance and speed.', materials: 'Mousetraps, old CDs or bottle caps for wheels, skewers, cardboard', cost: '$10–15, mousetraps reusable' },
+  { field: 'Mechanical', title: 'Onshape 3D CAD Intro', text: 'Design your own part or bracket in Onshape.', materials: 'Laptops, Onshape free education account', cost: 'Free' },
+  { field: 'Civil / Structural', title: 'Popsicle Stick Bridge Build & Load Test', text: 'Teams build a bridge and compete for the most weight held.', materials: 'Popsicle sticks, wood glue or hot glue, books and water bottles as weights', cost: '$20–30 total' },
+  { field: 'Civil / Structural', title: 'Marshmallow & Toothpick Tower', text: 'Build the tallest tower, or a geodesic dome.', materials: 'Mini marshmallows, toothpicks', cost: '$10–15' },
+  { field: 'Buffer', buffer: true, title: 'Buffer day', text: 'Catch-up day in case a meeting gets missed.' },
+  { field: 'Computer', title: 'Intro to Coding: Scratch or Python', text: 'Build a simple game or animation.', materials: 'Laptops or Chromebooks, free Scratch or Python', cost: 'Free' },
+  { field: 'Computer', buffer: true, title: 'Finish the coding project', text: 'Finish your game or animation, or use the day to catch up.', materials: 'Laptops or Chromebooks', cost: 'Free' },
+  { field: 'Chemical', title: 'Chemical Reactions Lab', text: 'Elephant toothpaste, density towers and pH testing.', materials: 'Hydrogen peroxide, yeast, dish soap, food coloring, household liquids', cost: '$15–20' },
+  { field: 'Aerospace', title: 'Paper Airplane Aerodynamics Lab', text: 'Test wing shapes and weight for distance and hang time.', materials: 'Paper, paper clips, tape, stopwatch', cost: 'Free–$5' },
+  { field: 'Aerospace', title: 'Bottle Rocket Launch', text: 'Build an air-pressure rocket, launch it and measure its altitude.', materials: 'Recycled 2-liter bottles, cardboard fins, cork and pump launcher', cost: '$10–20 one-time launcher' },
+  { field: 'Industrial / Systems', title: 'Rube Goldberg Machine Challenge', text: 'Teams chain simple machines together to do one task.', materials: 'Dominoes, marbles, cardboard tubes, rulers, recycled household items', cost: '$5–10' },
+  { field: 'Environmental', title: 'DIY Water Filtration', text: 'Design a filter that cleans dirty water.', materials: 'Plastic bottles, sand, gravel, cotton balls or coffee filters', cost: '$10–15' },
+  { field: 'Biomedical', title: 'Prosthetic Hand Build', text: 'A mechanical hand whose fingers move by tension.', materials: 'Straws, string, cardboard, tape', cost: '$8–12' },
+  { field: 'Materials Science', title: 'Egg Drop Protection Challenge', text: 'Design packaging that gets an egg through the drop.', materials: 'Straws, cotton balls, cardboard, tape, plastic bags, eggs', cost: '$8–12' },
+  { field: 'Naval / Marine', title: 'Aluminum Foil Boat Challenge', text: 'Build a boat that holds the most pennies before it sinks. Season finale and showcase day.', materials: 'Aluminum foil, pennies, a water tub', cost: '$5–10' },
 ]
+
+// One line per field, in the order the season reaches them. `code` is the field's usual
+// abbreviation, used where the full name won't fit (the dial).
+export const fields = [
+  { name: 'Electrical', code: 'EE', text: 'An Arduino blinking its first LED, then a working alarm or light-up gadget.' },
+  { name: 'Mechanical', code: 'ME', text: 'Levers, pulleys and gear trains, a mousetrap-powered car, and your first part in Onshape.' },
+  { name: 'Civil / Structural', code: 'CE', text: 'Popsicle-stick bridges loaded until they give, and toothpick towers as tall as they will stand.' },
+  { name: 'Computer', code: 'CompE', text: 'Code a game or an animation in Scratch or Python.' },
+  { name: 'Chemical', code: 'ChemE', text: 'Elephant toothpaste, density towers and pH testing.' },
+  { name: 'Aerospace', code: 'AE', text: 'Paper airplanes tested for distance and hang time, then air-pressure bottle rockets.' },
+  { name: 'Industrial / Systems', code: 'ISE', text: 'A Rube Goldberg machine: simple machines chained into one task.' },
+  { name: 'Environmental', code: 'EnvE', text: 'A filter that turns dirty water clean.' },
+  { name: 'Biomedical', code: 'BME', text: 'A prosthetic hand moved by string tendons.' },
+  { name: 'Materials Science', code: 'MSE', text: 'Packaging that keeps an egg intact through the drop.' },
+  { name: 'Naval / Marine', code: 'NAME', text: 'Foil boats loaded with pennies until they sink. The season finale.' },
+].map((f) => ({ ...f, activities: plan.filter((p) => p.field === f.name && !p.buffer) }))
+
+// Headline numbers for the stats band. Update these as the club grows.
+export const clubNumbers = { members: 80, opportunities: 5 }
+
+export const joinSteps = [
+  { title: 'Show up', text: `Come to any meeting in ${club.meetings.where}. No sign-up, no experience, no dues.` },
+  { title: 'Build with a team', text: 'Every meeting is a hands-on challenge in small teams. Materials are on the club.' },
+  { title: 'Come back next time', text: 'Each meeting is a different field of engineering, so missing one is fine. Pick up wherever we are.' },
+]
+
+export const cancelFaq = {
+  q: 'What happens if a meeting gets cancelled?',
+  a: 'Nothing is lost. The plan slides: the next meeting does the activity that was missed, and two buffer days in the season absorb the delay.',
+}
