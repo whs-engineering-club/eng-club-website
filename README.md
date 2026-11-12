@@ -1,6 +1,6 @@
 # Engineering Club website
 
-A single-page site for the WHS Engineering Club: what we do, current projects, meeting schedule, how to join, FAQ and contact info.
+A single-page site for the WHS Engineering Club: the season of meetings (a different field of engineering each time), builds, how to join, FAQ, sponsors and contact info.
 
 Built with React and Vite. Every push to `main` builds the site and deploys it to GitHub Pages through `.github/workflows/deploy.yml`.
 
@@ -15,16 +15,29 @@ npm run dev
 
 ## Edit the club details
 
-All the text lives in `src/data.js`: meeting times, projects, events, FAQ and the contact email. The current details are placeholders, so replace them with the real ones.
+Everything the site says lives in `src/data.js`:
+
+- `club`: email, Instagram, interest form, and the meeting schedule (`club.meetings`).
+- `plan`: the season, in order. One activity per meeting, with its field, materials and estimated cost.
+- `fields`: one line per field of engineering, shown on the dial.
+- `clubNumbers`: the member and STEM-opportunity counts in the numbers band.
+- `faq`, `joinSteps`, `opportunities`, `sponsors`, `tiers`.
+
+### When a meeting is cancelled
+
+Meetings are every other Wednesday, but not every one happens. Add the cancelled date to `club.meetings.skip` (as `YYYY-MM-DD`). The activity planned for that day moves to the next meeting and the rest of the season slides back one meeting. Dates on the site update on their own; the two buffer days in `plan` absorb the delay.
 
 ## Layout
 
-- `src/components/`: one component per page section
-- `src/components/Section.jsx`: shared numbered section layout (pinned heading, drawn rule)
-- `src/components/TrussDrawing.jsx`: the technical drawing in the hero that draws itself on load
-- `src/lib/meetings.js`: works out the every-other-Wednesday meeting dates from `club.meetings` in `src/data.js` (add holiday dates to `skip`)
-- `src/components/NextMeeting.jsx`: live countdown to the next meeting
-- `src/lib/hooks.js`: scroll reveal, scroll progress, active section and clock hooks
-- `src/styles.css`: all styles, with the color tokens at the top
+- `src/App.jsx`: the page, in order, and the black/bone section rhythm.
+- `src/components/Intro.jsx`: the opening sequence (skipped for reduced motion or a `#section` link).
+- `src/components/Hero.jsx`: the CAD-inspector hero, a gear that draws, shades and turns as you scroll, with callouts that follow its geometry.
+- `src/components/FieldsDial.jsx`: the fields of engineering on a dial you can click or drag.
+- `src/components/BuildsTrack.jsx`: three season builds on a horizontal track.
+- `src/components/Sections.jsx`: nav, countdown, numbers, season list, join, FAQ, sponsors and contact.
+- `src/lib/gear.js` and `src/lib/parts.js`: the small 3D renderer and the parts it draws.
+- `src/lib/season.js`: pairs the season plan with real meeting dates.
+- `src/lib/meetings.js`: works out the every-other-Wednesday meeting dates.
+- `src/styles/`: `theme.css` (palette and section tones), `base.css` (layout and components), `dial.css`.
 
-Sections fade in as they scroll into view. With "reduce motion" turned on in the OS, everything shows without animation.
+With "reduce motion" turned on in the OS, the intro is skipped and scroll-driven motion is replaced by still states.
