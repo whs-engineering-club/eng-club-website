@@ -1,5 +1,5 @@
 /* Palette — Figma color scheme #51 "Inked": #000000, #464545, #DFDEDC, #A6A7A2, #00ACAC.
-   Registered color tokens let the page cross-fade between black and bone section by section. */
+   The site stays dark throughout. */
 @property --bg { syntax: '<color>'; inherits: true; initial-value: #000; }
 @property --panel { syntax: '<color>'; inherits: true; initial-value: #0F0F0F; }
 @property --line { syntax: '<color>'; inherits: true; initial-value: #2A2A2A; }
@@ -27,18 +27,6 @@
   --label-bg: rgba(0, 0, 0, 0.8);
   --part-ink: #F4F3F1;
   transition: --bg 700ms var(--ease-out), --panel 700ms var(--ease-out), --line 700ms var(--ease-out), --text 700ms var(--ease-out), --muted 700ms var(--ease-out), --strong 700ms var(--ease-out), --dim 700ms var(--ease-out), --live 700ms var(--ease-out);
-}
-:root[data-tone="light"] {
-  --bg: #DFDEDC;
-  --panel: #E9E8E6;
-  --line: #C6C5C2;
-  --text: #464545;
-  --muted: #6E6F6A;
-  --strong: #000000;
-  --dim: #A6A7A2;
-  --live: #007C7C;
-  --logo-filter: brightness(0);
-  color-scheme: light;
 }
 ::selection { background: #00ACAC; color: #000; }
 .bn-btn:not(.ghost) { background: var(--strong); color: var(--bg); }
